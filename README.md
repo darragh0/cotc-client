@@ -2,7 +2,7 @@
 A project to collect metrics from different sources (device metrics, weather data) to send to a Flask app ([see here](https://github.com/darragh0/cotc-server)).
 
 ### To Run
-To run this project, you will only be using the `collector` script. The other directories are dependencies.
+To run this project, you will only be using the `collector` script. `sdk` is just a dependency.
 
 First, navigate to the root directory of this project (`cotc-client`).
 
