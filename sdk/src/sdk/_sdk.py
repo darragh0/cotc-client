@@ -26,7 +26,6 @@ def send_snapshots(*snapshots: MetricSnapshotJson, endpoint: str) -> Response | 
             url=endpoint,
             headers=JSON_HEADER,
             json=dumps([s.model_dump() for s in snapshots]),
-
             timeout=10,
         )
     except RequestConnectionError:
