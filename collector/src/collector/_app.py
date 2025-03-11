@@ -64,6 +64,7 @@ class App:
                 if response is None:
                     loop_log(CRITICAL, "Connection refused")
                     ret = ExitCode.CONNECTION_REFUSED
+                    print()
                     break
 
                 ok: bool = False
