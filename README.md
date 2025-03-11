@@ -3,6 +3,7 @@ A project to collect metrics from different sources (device metrics, weather dat
 
 ### To Run
 To run this project, you will only be using the `collector` script. The other directories are dependencies.
+
 First, navigate to the root directory of this project (`cotc-client`).
 
 Then clone [this repo](https://github.com/darragh0/cotc-common) via:
