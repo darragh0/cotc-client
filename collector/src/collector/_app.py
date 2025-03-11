@@ -76,30 +76,43 @@ class App:
                         loop_log(ERROR, "Failed to send metrics: %d", code)
 
                 if ok:
-                    for snapshot, current_rank in (
-                        (remote, remote_rank),
-                        (local, local_rank),
-                    ):
-                        new_rank_str: str = response.json()[snapshot.device.name]
-                        new_rank: PublisherRank = PublisherRank[new_rank_str]
+                    new_rank_str_remote: str = response.json()[remote.device.name]
+                    new_rank_remote: PublisherRank = PublisherRank[new_rank_str_remote]
+                    new_rank_str_local: str = response.json()[local.device.name]
+                    new_rank_local: PublisherRank = PublisherRank[new_rank_str_local]
 
-                        if current_rank is None:
-                            current_rank = new_rank
-                            self.logger.info(
-                                "Current rank for <flg>%s</flg> is **<flg>%s</flg>**",
-                                snapshot.device.name,
-                                current_rank.name,
-                            )
-                        elif new_rank.value == current_rank.next.value:
-                            current_rank = new_rank
-                            self.logger.info(
-                                "Device <flg>%s</flg> is now a **<flg>%s</flg>** level publisher ... WOW!",
-                                snapshot.device.name,
-                                current_rank.name,
-                            )
+                    if remote_rank is None:
+                        remote_rank = new_rank_remote
+                        self.logger.info(
+                            "Current rank for <flg>%s</flg> is **<flg>%s</flg>**",
+                            remote.device.name,
+                            remote_rank.name,
+                        )
+                    elif new_rank_remote.value == remote_rank.next.value:
+                        remote_rank = new_rank_remote
+                        self.logger.info(
+                            "Device <flg>%s</flg> is now a **<flg>%s</flg>** level publisher ... WOW!",
+                            remote.device.name,
+                            remote_rank.name,
+                        )
 
+                    if local_rank is None:
+                        local_rank = new_rank_local
+                        self.logger.info(
+                            "Current rank for <flg>%s</flg> is **<flg>%s</flg>**",
+                            local.device.name,
+                            local_rank.name,
+                        )
+                    elif new_rank_local.value == local_rank.next.value:
+                        local_rank = new_rank_local
+                        self.logger.info(
+                            "Device <flg>%s</flg> is now a **<flg>%s</flg>** level publisher ... WOW!",
+                            local.device.name,
+                            local_rank.name,
+                        )
                 if i < self.number:
                     sleep(self.interval)
+                print()
             else:
                 self.logger.info("All <fly>%d</fly> iterations completed", self.number)
 
@@ -107,8 +120,8 @@ class App:
             print("\r", end="")  # Hide "^C"
             self.logger.exception("Keyboard interrupt received")
             ret = ExitCode.INTERRUPTED
+            print()
 
-        print()
         self.logger.info(
             "Collector program finished with exit code <fly>%d</fly> (<fly>%s</fly>)",
             ret,
