@@ -1,0 +1,17 @@
+[project]
+name = "sdk"
+version = "0.1.0"
+description = "Metric snapshot publisher SDK"
+requires-python = ">=3.10"
+dependencies = [
+    "cotc-common",
+    "requests>=2.32.3",
+    "types-requests>=2.32.0.20250306",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+cotc-common = { path = "../cotc-common" }

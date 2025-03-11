@@ -1,0 +1,27 @@
+[project]
+name = "collector"
+version = "0.1.0"
+description = "Collects local & remote metrics & sends them to a server"
+requires-python = ">=3.12"
+dependencies = [
+    "cotc-common",
+    "psutil>=7.0.0",
+    "pydantic>=2.10.6",
+    "pyproject-toml>=0.1.0",
+    "requests>=2.32.3",
+    "sdk",
+    "types-psutil>=7.0.0.20250218",
+    "types-requests>=2.32.0.20241016",
+]
+
+[tool.uv.sources]
+cotc-common = { path = "../cotc-common" }
+sdk = { path = "../sdk" }
+
+[project.scripts]
+collector = "collector.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+

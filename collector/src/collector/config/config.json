@@ -1,0 +1,51 @@
+{
+  "app": {
+    "weather_endpoint": "http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric",
+    "city": "London",
+    "api_key": "3704f3d9fcbeb5050dbaaee3d281a0ae"
+  },
+  "argparse": {
+    "program_name": "collector",
+    "version": "0.1.0",
+    "description": "Collects local and remote metrics and sends them to a server",
+    "args": [
+      {
+        "short_opt": "i",
+        "long_opt": "interval",
+        "metavar": "SECONDS",
+        "help": "Interval in seconds between snapshots",
+        "type": "float",
+        "default": 1000,
+        "min": 0,
+        "max": 1000
+      },
+      {
+        "short_opt": "n",
+        "long_opt": "number",
+        "metavar": "NUMBER",
+        "help": "Number of snapshots to send",
+        "type": "int",
+        "default": 1000,
+        "min": 1,
+        "max": 1000
+      },
+      {
+        "short_opt": "e",
+        "long_opt": "endpoint",
+        "metavar": "ENDPOINT",
+        "help": "Endpoint to send the metrics to",
+        "type": "str",
+        "default": "http://127.0.0.1:8080/metrics"
+      }
+    ]
+  },
+  "logging": {
+    "output_dir": "logs",
+    "file_name": "collector.log",
+    "enabled_handlers": [
+      "stdout",
+      "stderr",
+      "file"
+    ]
+  }
+}
