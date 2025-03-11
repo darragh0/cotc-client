@@ -11,4 +11,4 @@ wheels/
 
 # Other
 cotc-common/
-
+**/logs/
