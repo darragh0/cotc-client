@@ -20,7 +20,7 @@ pip install ./collector
 ```
 
 > [!NOTE]  
-> It will probably be .\.venv\Scripts\activate (rather than `source ./.venv/bin/activate`) if you are on Windows.
+> It will probably be .\\.venv\Scripts\activate (rather than `source ./.venv/bin/activate`) if you are on Windows.
 
 
 You should then be able to run the `collector` script. For example:
