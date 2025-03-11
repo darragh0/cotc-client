@@ -27,3 +27,6 @@ You should then be able to run the `collector` script. For example:
 ```sh
 collector -v
 ```
+
+> [!NOTE]
+> This project goes hand-in-hand w/ [this project](https://github.com/darragh0/cotc-client).
